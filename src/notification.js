@@ -43,39 +43,11 @@ class Notification extends Component {
   * @returns {object} result The style.
   */
   getBarStyle() {
-    if (this.props.style === false) return {};
-
     const { isActive, barStyle, activeBarStyle } = this.props;
 
-    const baseStyle = {
-      position: 'fixed',
-      bottom: '2rem',
-      left: '-100%',
-      width: 'auto',
-      padding: '1rem',
-      margin: 0,
-      color: '#fafafa',
-      font: '1rem normal Roboto, sans-serif',
-      borderRadius: '5px',
-      background: '#212121',
-      borderSizing: 'border-box',
-      boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
-      cursor: 'default',
-      WebKitTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      MozTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      msTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      OTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      WebkitTransform: 'translatez(0)',
-      MozTransform: 'translatez(0)',
-      msTransform: 'translatez(0)',
-      OTransform: 'translatez(0)',
-      transform: 'translatez(0)'
-    };
-
     return isActive ?
-    Object.assign({}, baseStyle, { left: '1rem' }, barStyle, activeBarStyle) :
-    Object.assign({}, baseStyle, barStyle);
+    Object.assign({}, barStyle, activeBarStyle) :
+    Object.assign({}, barStyle);
   }
 
   /*
@@ -84,17 +56,7 @@ class Notification extends Component {
   * @returns {object} result The style.
   */
   getActionStyle() {
-    return this.props.style !== false ? Object.assign({}, {
-      padding: '0.125rem',
-      marginLeft: '1rem',
-      color: '#f44336',
-      font: '.75rem normal Roboto, sans-serif',
-      lineHeight: '1rem',
-      letterSpacing: '.125ex',
-      textTransform: 'uppercase',
-      borderRadius: '5px',
-      cursor: 'pointer'
-    }, this.props.actionStyle) : {};
+    return this.props.actionStyle;
   }
 
   /*
@@ -103,10 +65,7 @@ class Notification extends Component {
   * @returns {object} result The style.
   */
   getTitleStyle() {
-    return this.props.style !== false ? Object.assign({}, {
-      fontWeight: '700',
-      marginRight: '.5rem'
-    }, this.props.titleStyle) : {};
+    return this.props.titleStyle;
   }
 
   /*
